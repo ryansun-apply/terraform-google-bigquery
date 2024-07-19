@@ -62,6 +62,19 @@ resource "google_bigquery_dataset" "main" {
       special_group  = lookup(access.value, "special_group", "")
     }
   }
+
+  dynamic "access" {
+    for_each = var.dataset_access
+    content {
+      dataset {
+        dataset {
+          project_id = lookup(access.value, "project_id", "")
+          dataset_id = lookup(access.value, "dataset_id", "")
+        }
+        target_types = lookup(access.value, "target_types", [])
+      }
+    }
+  }
 }
 
 resource "google_bigquery_table" "main" {

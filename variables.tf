@@ -94,6 +94,16 @@ variable "access" {
   }]
 }
 
+# Format: list(map(string))
+# dataset_id = Name of dataset
+# project_id = Project that dataset is in
+variable "dataset_access" {
+  description = "A list of maps that define the datasets to be authorized."
+  type        = any
+
+  default = []
+}
+
 variable "tables" {
   description = "A list of objects which include table_id, table_name, schema, clustering, time_partitioning, range_partitioning, expiration_time and labels."
   default     = []
