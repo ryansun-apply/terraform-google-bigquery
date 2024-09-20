@@ -68,10 +68,10 @@ resource "google_bigquery_dataset" "main" {
     content {
       dataset {
         dataset {
-          project_id = lookup(access.value, "project_id", "")
+          project_id = var.project_id
           dataset_id = lookup(access.value, "dataset_id", "")
         }
-        target_types = lookup(access.value, "target_types", [])
+        target_types = ["VIEWS"]
       }
     }
   }
