@@ -69,7 +69,7 @@ resource "google_bigquery_dataset" "main" {
       dataset {
         dataset {
           project_id = var.project_id
-          dataset_id = lookup(access.value, "dataset_id", "")
+          dataset_id = access.value
         }
         target_types = ["VIEWS"]
       }
